@@ -3,8 +3,8 @@ import NavBar from "./Components/NavBar/NavBar";
 import ItemListContainer from "./Components/ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "./ComponentContainer/ItemDetailContainer/ItemDetailContainer";
 import { CartContextProvider } from "./context/CartContext";
-import "./App.scss";
 import CartContainer from "./ComponentContainer/CartContainer/CartContainer";
+import "./App.scss";
 
 function App() {
     const showName = (name) => name;
