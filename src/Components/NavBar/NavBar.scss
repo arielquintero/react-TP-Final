@@ -1,0 +1,32 @@
+.nav-bar {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #607c95;
+  padding: 0 10px;
+  .brand {
+    color: white;
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+  .flex-links {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    .link {
+      margin: auto;
+      cursor: pointer;
+      transition: 0.2s all;
+      &:hover {
+        color: white;
+      }
+      &:active {
+        transform: scale(1.1);
+        color: saturate($color: rgb(235, 144, 101), $amount: 100);
+        text-shadow: rgba(255, 255, 255, 0.8) 0 0 10px;
+      }
+    }
+  }
+  
+}

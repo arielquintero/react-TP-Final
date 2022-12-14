@@ -1,0 +1,10 @@
+.item-list-container {
+  margin: 40px;
+  .list-products {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-gap: 1rem;
+  }
+}
