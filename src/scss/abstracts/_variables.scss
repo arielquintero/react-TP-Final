@@ -1,8 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
 :root {
   /*fonts*/
-  --font-poppins: 'Poppins', sans-serif;
-
-  /*colors*/
+  --font-poppins: "Poppins", sans-serif;
 }
+$colorsNav: (
+  primary: #2d2c34 5%,
+  secondary: #1a1a45 26%,
+  tertiary: #086d82 76%,
+);
+
+$colorShadow: rgba(0, 0, 0, 0.3);
+
+$colorBGC: rgba(240, 240, 240, 0.3);
+
+$colorFont: rgba(0,0,0, 0.4);

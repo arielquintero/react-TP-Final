@@ -1,29 +1,26 @@
-import { Navigate } from "react-router-dom";
 import { useCartContext } from "../../context/CartContext";
-import "./Cart.scss";
+import { useNavigate } from "react-router-dom"
 
 const Cart = ({ product }) => {
-    const { emptyCart } = useCartContext();
+    const { splitPrice, deleteItemToCart } = useCartContext();
+    const navigate = useNavigate();
+    const subTotal = splitPrice(product.price, product.quantity);
 
     return (
-        <div className="wrapper-cart">
-            <div className="wrapper-products">
-                <li key={product.id} className="item-list-product">
-                    {" "}
+        <>
+            <li key={product.id} className="cart_item-list-product">
+                {" "}
+                <p className="back-item-detail" onClick={()=> navigate(`/detail/${product.id}`)}>
                     Nombre: {product.name} - Categoria: {product.categoria} - precio:{" "}
-                    {product.price} - cantidad: {product.cant}{" "}
-                </li>
-                <button className="btn-empty-item">X</button>
-            </div>
-            <section className="wrapper-empty-back">
-                <button className="btn-empty-cart" onClick={emptyCart}>
-                    Vaciar carrito
+                    {subTotal[0]},{subTotal[1]} - cantidad: {product.quantity}{" "}
+                </p>
+                <button
+                    className="btn-empty-item"
+                    onClick={() => deleteItemToCart(product)}>
+                    X
                 </button>
-                <button className="btn-back">
-                    <Navigate to="/">Back</Navigate>
-                </button>
-            </section>
-        </div>
+            </li>
+        </>
     );
 };
 

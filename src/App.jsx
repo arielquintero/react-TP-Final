@@ -7,7 +7,7 @@ import CartContainer from "./ComponentContainer/CartContainer/CartContainer";
 import "./App.scss";
 
 function App() {
-    const showName = (name) => name;
+    // const showName = (name) => name;
     return (
         <BrowserRouter>
             <CartContextProvider value={{}}>

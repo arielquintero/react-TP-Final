@@ -1,25 +1,51 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useCartContext } from "../../context/CartContext";
-import "./CartWidget.scss";
+import { BsCart } from "react-icons/bs";
+import ModalWindow from "../ModalWindow/ModalWindow";
+import CartList from "../CartList/CartList";
 
 const CartWidget = () => {
-    const { cartList } = useCartContext();
+    const { cartList, cartQuantity, viewModal, setViewModal, toggleModal, closeModal } =
+        useCartContext();
+    // const [viewModal, setViewModal] = useState(false);
+    // const navigate = useNavigate();
 
-    const quanty = cartList.map((prod) => prod.cant);
-    console.log(quanty);
-    const quantyTotal = quanty.reduce((acu, elem) => acu + elem, 0);
+    // const closeModal = () => {
+    //     setViewModal(!viewModal);
+    //     navigate("/cart")
+        console.log(viewModal);
+    // };
 
     return (
-        <div className="cart-widget">
-            <p className={quanty.length === 0 ? "badge-opacity" : "badge"}>
-                {quantyTotal}
-            </p>
-            <img
-                className="img-cart-widget"
-                src="/src/assets/images/cartwidget.svg"
-                alt="cartwidget"
-            />
-        </div>
+        <>
+            <div
+                className="cartwidget_cart-widget"
+                onClick={ toggleModal }>
+                <p className="cart-widget">
+                    <BsCart />{" "}
+                    <p className="my-cart">
+                        Mi carrito
+                        <p
+                            className={
+                                cartList.length === 0 ? "badge-opacity" : "badge"
+                            }>
+                            { cartQuantity() || ""}
+                            {"   "}- items
+                        </p>
+                    </p>
+                </p>
+            </div>
+            <ModalWindow viewModal={viewModal} setViewModal={setViewModal}>
+                <CartList />
+                <button className="btn-link-cart" onClick={ closeModal }>
+                    Mi Carrito
+                </button>
+            </ModalWindow>
+        </>
     );
 };
 
 export default CartWidget;
+
+// <p className={cartList.length === 0 ? "badge-opacity" : "badge"}>

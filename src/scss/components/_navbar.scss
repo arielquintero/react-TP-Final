@@ -1,32 +1,39 @@
-.nav-bar {
+.navbar_nav-bar {
   height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #607c95;
+  @include gradient(
+    35deg,
+    map-get($colorsNav, primary),
+    map-get($colorsNav, secondary),
+    map-get($colorsNav, tertiary)
+  );
   padding: 0 10px;
-  .brand {
+  & .brand {
     color: white;
+    // @include mixins.color;
+    // color: map-get(variable.$colors, secondary);
     font-weight: 700;
     font-size: 1.2rem;
   }
-  .flex-links {
+  & .flex-links {
     display: flex;
     justify-content: center;
     width: 100%;
-    .link {
+    & .link {
       margin: auto;
       cursor: pointer;
       transition: 0.2s all;
+      color: white;
       &:hover {
-        color: white;
+        color: adjust-hue($color: #d3c3c3, $degrees: 0.54);
       }
       &:active {
         transform: scale(1.1);
         color: saturate($color: rgb(235, 144, 101), $amount: 100);
-        text-shadow: rgba(255, 255, 255, 0.8) 0 0 10px;
+        text-shadow: white 0 0 10px;
       }
     }
   }
-  
 }

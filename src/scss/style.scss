@@ -1,0 +1,20 @@
+/*base*/
+@use "./base/resets";
+@use "./base/base";
+
+/*abstracts*/
+@use "./abstracts/variables" as *;
+@use "./abstracts/mixins" as *;
+@use "./abstracts/functions" as *;
+
+/*Components*/
+@import "./components/navbar";
+@import "./components/cart";
+@import "./components/cartwidget";
+@import "./components/itemcount";
+@import "./components/itemlistconteiner";
+@import "./components/itemdetail";
+@import "./components/item";
+@import "./components/loading";
+@import "./components/cartlist";
+@import "./components/modalwindow";

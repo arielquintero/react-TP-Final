@@ -1,26 +1,30 @@
 import ItemCount from "../ItemCount/ItemCount";
 import { useCartContext } from "../../context/CartContext";
-import { NavLink } from "react-router-dom";
-import "./ItemDetail.scss";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const ItemDetail = ({ product }) => {
-    const { addToCart } = useCartContext();
+    const { addToCart, splitPrice } = useCartContext();
+    const [andNow, setAndNow] = useState(false);
+    const navigate = useNavigate();
 
-    const onAdd = (cant) => {
-        console.log(cant);
-        addToCart({ ...product, cant });
+    const onAdd = (quantity) => {
+        console.log(quantity);
+        addToCart(product, quantity);
+        setAndNow(true)
     };
 
+    const showPrice = splitPrice(product.price);
 
     return (
-        <div className="item-detail">
+        <div className="itemdetail_item-detail">
             <div className="item-wrapper">
                 <div className="item-product">
-                    <button className="item-back">
-                        <NavLink to="/">back</NavLink>
-                    </button>
+                    <button className="item-back" onClick={() => navigate("/")} />
                     <h3 className="item-title-product">{product.name}</h3>
-                    <h4 className="item-price-product">$ {product.price}</h4>
+                    <h4 className="item-price-product">
+                        $ {showPrice[0]},{showPrice[1]}
+                    </h4>
                     <img src={product.img} alt={product.name} />
                 </div>
                 <div className="item-detail-product">
@@ -33,12 +37,22 @@ const ItemDetail = ({ product }) => {
                     </h4>
                 </div>
                 <div className="item-detail-footer">
-                    <ItemCount
-                        stock={5}
-                        initial={1}
-                        onAdd={onAdd}
-                        price={product.price}
-                    />
+                    <div className="line-top"></div>
+                    <>
+                    {andNow ? (
+                        <p className="show-btn-andnow">
+                        <button className="follow-shopping" onClick={()=> navigate("/")}>Sigue Comprando</button>
+                        <button className="to-cart" onClick={()=> navigate("/cart")}>Mi Carrito</button>
+                        </p>
+                    ) : (
+                        <ItemCount
+                            stock={5}
+                            initial={1}
+                            onAdd={onAdd}
+                            price={product.price}
+                        />
+                    )}
+                    </>
                 </div>
             </div>
         </div>

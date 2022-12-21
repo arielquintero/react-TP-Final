@@ -1,0 +1,11 @@
+
+@mixin colorBtn {
+  background-color: #ff5500;
+}
+ 
+@mixin gradient($direction, $colorOne, $colorTwo, $colorThree) {
+  background: -webkit-linear-gradient($direction, $colorOne, $colorTwo, $colorThree);
+  background: -moz-linear-gradient($direction, $colorOne, $colorTwo, $colorThree);
+  background: -o-linear-gradient($direction, $colorOne, $colorTwo, $colorThree);
+  background: linear-gradient($direction, $colorOne, $colorTwo, $colorThree);
+}

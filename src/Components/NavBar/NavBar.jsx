@@ -1,10 +1,9 @@
 import { NavLink } from "react-router-dom";
 import CartWidget from "../CartWidget/CartWidget";
-import "./NavBar.scss";
 
 const NavBar = () => {
     return (
-        <div className="nav-bar">
+        <div className="navbar_nav-bar">
             <span className="brand">Ecommers</span>
             <section className="flex-links">
                 <NavLink
@@ -14,17 +13,13 @@ const NavBar = () => {
                     }>
                     Home
                 </NavLink>
-                <NavLink className="link link-article" to="/category/componentes1">
-                    Article1
+                <NavLink className="link link-article" to="/category/Componentes">
+                    Componentes
                 </NavLink>
-                <NavLink className="link link-article" to="/category/componentes2">
-                    Article2
+                <NavLink className="link link-article" to="/category/Arduino">
+                    Arduino
                 </NavLink>
-                {
-                    <NavLink className="link link-cart" to="/cart">
-                        <CartWidget />
-                    </NavLink>
-                }
+                <CartWidget />
             </section>
         </div>
     );

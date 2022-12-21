@@ -1,0 +1,30 @@
+.cart_item-list-product {
+  display: flex;
+  justify-content: space-evenly;
+  &:nth-child(2n + 1) {
+    background: rgb(212, 212, 27);
+  }
+  & .back-item-detail {
+    cursor: pointer;
+    transition: 250ms;
+    &:hover {
+      background-color: $colorShadow;
+      opacity: 0.4;
+    }
+  }
+  & .btn-empty-item {
+    width: 20px;
+    border: 1px solid black;
+    border-top-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+  }
+}
+
+.wrapper-empty-back {
+  display: flex;
+  justify-content: space-evenly;
+  & .btn-back {
+    text-decoration: none;
+    border: 1px solid black;
+  }
+}

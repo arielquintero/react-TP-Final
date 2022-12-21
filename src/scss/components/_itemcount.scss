@@ -1,12 +1,17 @@
-.wrapper-item-count {
+.itemcount_wrapper-item-count {
   margin-top: 10px;
+  padding-left: 20px;
   .title-price-total-item-count {
-    margin-left: 50px;
+    text-transform: uppercase;
   }
   .start-item-count {
     .price-item-count {
-      color: rgb(26, 192, 26);
+      font-weight: 700;
+      color: #1ac01a;
       font-size: 1.8rem;
+      .super {
+        font-size: 1rem;
+      }
     }
   }
   .item-count {
@@ -15,8 +20,9 @@
     justify-content: space-around;
     align-items: center;
     .center-item-count {
+      margin: auto;
       .quanty-item-count {
-        font-size: 1.1rem;
+        font-size: 1rem;
         font-weight: 500;
       }
       .count {
@@ -45,7 +51,7 @@
       .btn-to-cart-item-count {
         cursor: pointer;
         font-size: 1.8rem;
-        color: rgb(26, 192, 26);
+        color: #1ac01a;
       }
     }
   }

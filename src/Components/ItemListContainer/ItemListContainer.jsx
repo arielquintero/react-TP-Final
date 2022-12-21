@@ -1,42 +1,54 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import ItemList from "../../ComponentContainer/ItemList/ItemList";
-import {
-    getProducts,
-    getProductsByCategory,
-} from "../../ComponentContainer/ShowProdApi/showProdApi";
-import "./ItemListConteiner.scss";
+import { collection, getDocs, getFirestore, query, where } from "firebase/firestore";
 import Loading from "../Loading/Loading";
+import ItemList from "../../ComponentContainer/ItemList/ItemList";
 
-const ItemListContainer = ({ greeting, myName }) => {
+const ItemListContainer = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
     const { idCategory } = useParams();
 
-    // console.log(idCategory);
-
     useEffect(() => {
         if (idCategory) {
-            setTimeout(() => {
-                getProductsByCategory(idCategory)
-                    .then((products) => setProducts(products))
-                    .catch((err) => console.error(err))
-                    .finally(() => setLoading(false));
-            }, 1000);
+            const db = getFirestore();
+            const queryCollection = collection(db, "productos");
+            const queryFilter = query(
+                queryCollection,
+                where("categoria", "==", idCategory)
+            );
+            getDocs(queryFilter)
+                .then((data) =>
+                    setProducts(
+                        data.docs.map((product) => ({
+                            id: product.id,
+                            ...product.data(),
+                        }))
+                    )
+                )
+                .catch((err) => console.error(err))
+                .finally(() => setLoading(false));
         } else {
-            getProducts()
-                .then((products) => setProducts(products))
+            const db = getFirestore();
+            const queryCollection = collection(db, "productos");
+            getDocs(queryCollection)
+                .then((data) =>
+                    setProducts(
+                        data.docs.map((product) => ({
+                            id: product.id,
+                            ...product.data(),
+                        }))
+                    )
+                )
                 .catch((err) => console.error(err))
                 .finally(() => setLoading(false));
         }
     }, [idCategory]);
 
     return (
-        <div className="item-list-container">
+        <div className="itemlistcontainer_item-list-container">
             <section className="loading">
-                {greeting}
-                {myName}
             </section>
             <section className="list-products">
                 {loading ? <Loading /> : <ItemList products={products} />}
@@ -46,9 +58,3 @@ const ItemListContainer = ({ greeting, myName }) => {
 };
 
 export default ItemListContainer;
-
-// showProdApi()
-//     .then((data) =>
-//         setProducts(data.filter((prod) => prod.category === id))
-//     )
-//     .catch((err) => console.error(err));

@@ -1,22 +1,22 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 import ItemDetail from "../../Components/ItemDetail/ItemDetail";
-import { getProductId } from "../ShowProdApi/showProdApi";
 
 const ItemDetailContainer = () => {
     const [product, setProduct] = useState({});
 
     const { productId } = useParams();
-    // console.log(useParams())
 
-    // console.log(productId);
+    // Aca como solo voy a traer un solo producto no uso una collection sino doc
 
     useEffect(() => {
-        setTimeout(() => {
-            getProductId(productId).then((product) => setProduct(product));
-        }, 2000);
-    });
-    // console.log(product);
+        const db = getFirestore();
+        const queryDoc = doc(db, "productos", productId);
+        getDoc(queryDoc).then((data) => setProduct({ id: data.id, ...data.data() }));
+    }, [productId]);
+
+
     return <ItemDetail product={product} />;
 };
 

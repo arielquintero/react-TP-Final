@@ -1,0 +1,38 @@
+.cartwidget_cart-widget {
+  position: relative;
+  width: 12rem;
+  height: 2rem;
+  border-radius: 2px;
+  @include colorBtn;
+  .cart-widget {
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 0.5rem;
+    width: 100%;
+    .my-cart {
+      display: flex;
+      align-items: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: white;
+      opacity: 1;
+      .badge,
+      .badge-opacity {
+        @extend .my-cart;
+        margin-left: 5px;
+      }
+      .badge-opacity {
+        opacity: 0;
+      }
+      .badge-qty {
+        color: black;
+        margin-left: 2px;
+      }
+    }
+  }
+  & .btn-link-cart {
+    border: 1px solid black;
+    color: black;
+  }
+}
