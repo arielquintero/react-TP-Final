@@ -10,6 +10,7 @@ export const useCartContext = () => useContext(CartContext);
 export const CartContextProvider = ({ children }) => {
     const [cartList, setCartList] = useState([]);
     const [viewModal, setViewModal] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const navigate = useNavigate();
 
@@ -38,10 +39,8 @@ export const CartContextProvider = ({ children }) => {
     };
     const deleteItemToCart = (productToCart) => {
         const oldCart = { ...productToCart };
-        // if (isInCart(oldCart.id)) {
         const newCart = cartList.filter((el) => el.id !== oldCart.id);
         setCartList([...newCart]);
-        // }
     };
 
     const cartQuantity = () => {
@@ -60,11 +59,11 @@ export const CartContextProvider = ({ children }) => {
         );
     };
 
-    const toggleModal = () => setViewModal(!viewModal);
+    const toggleModal = (toogle=!viewModal) => setViewModal(toogle);
     
-    const closeModal = (path="/cart") => {
-        toggleModal()
-        navigate(path)
+    const closeModal = (path="/cart", state=null) => {
+        toggleModal(state)
+       return navigate(path)
     };
 
 
@@ -74,6 +73,7 @@ export const CartContextProvider = ({ children }) => {
             value={{
                 cartList,
                 viewModal,
+                isLoading,
                 setViewModal,
                 addToCart,
                 emptyCart,
@@ -83,6 +83,7 @@ export const CartContextProvider = ({ children }) => {
                 priceTotal,
                 toggleModal,
                 closeModal,
+                setIsLoading,
             }}>
             {children}
         </CartContext.Provider>

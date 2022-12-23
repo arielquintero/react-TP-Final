@@ -10,22 +10,22 @@
     position: absolute;
     top: 0.5rem;
     width: 100%;
+    color: white;
     .my-cart {
       display: flex;
       align-items: center;
       font-size: 0.8rem;
       font-weight: 700;
-      color: white;
       opacity: 1;
-      .badge,
-      .badge-opacity {
+      & .badge,
+      & .badge-empty {
         @extend .my-cart;
         margin-left: 5px;
       }
-      .badge-opacity {
+      & .badge-empty {
         opacity: 0;
       }
-      .badge-qty {
+      & .badge-qty {
         color: black;
         margin-left: 2px;
       }

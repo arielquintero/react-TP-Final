@@ -1,7 +1,12 @@
-
 const Loading = () => {
-    
-    return <h2 className="loading_loading">Loading.....</h2>;
+	return (
+		<>
+			<div className="loading_loading">
+                <h1 className="loading-title">Buscando</h1>
+				<div className="loading-spinner"></div>
+			</div>
+		</>
+	);
 };
 
 export default Loading;

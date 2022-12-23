@@ -1,25 +1,31 @@
 import { VscClose } from "react-icons/vsc";
+import "animate.css";
 
-const ModalWindow = ({ children, viewModal, setViewModal }) => {
-    console.log(viewModal)
-    return (
-        viewModal && (
-            // <div className={`${!viewModal ? "container-modal show-modal" : "container-modal"}`}>
-            <label className="modalwindow_wrapper-modal">
-                <div className="container-modal">
-                    <div className="header-modal">
-                        <h3>Titulo</h3>
-                    </div>
-                    <button
-                        className="close-modal"
-                        onClick={() => setViewModal(false)}>
-                        <VscClose className="VscClose" />
-                    </button>
-                    {children}
-                </div>
-                
-            </label>
-        )
-    );
+const ModalWindow = ({
+	children,
+	viewModal,
+	setViewModal,
+	title = "Titulo",
+}) => {
+	return (
+		viewModal && (
+			<label className="modalwindow_wrapper-modal">
+				<div className="container-modal animate__animated animate__fadeInRight">
+					<div className="header-modal">
+						<h3>{title}</h3>
+					</div>
+					<button
+						className="close-modal"
+						onClick={() => setViewModal(false)}
+					>
+						<p className="btn-content-close">
+							<VscClose className="VscClose" /> Cerrar
+						</p>
+					</button>
+					{children}
+				</div>
+			</label>
+		)
+	);
 };
 export default ModalWindow;

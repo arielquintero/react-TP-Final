@@ -1,76 +1,107 @@
-.item_wrapper-product {
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  background: $colorBGC;
-  width: 350px;
-  overflow: hidden;
-  border-radius: 8px;
-  border: 1px solid $colorBGC;
-  height: 500px;
-  transition: all 0.3s ease;
-  &:hover {
-    box-shadow: 0px 2px 8px 1px $colorShadow;
-  }
-  .item-header {
-    display: flex;
-    justify-content: center;
-    height: 70px;
-    .item-title {
-      margin: 0 3px;
-      text-transform: lowercase;
-      align-self: center;
-      font-weight: 700;
-      font-size: 1.2rem;
+.item_wrapper {
+  max-width: 1400px;
+  margin: 1rem auto;
+  display: inline-flex;
+  flex-wrap: wrap;
+
+  & .wrapper-product {
+    margin: 40px;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    background: $colorBGC;
+    width: 350px;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid $colorBGC;
+    height: 500px;
+    transition: all 0.3s ease;
+    position: relative;
+    &:hover {
+      box-shadow: 0px 2px 8px 1px $colorShadow;
+    }
+    & .item-favorite {
+      top: 0.5rem;
+      right: 0.6rem;
+      position: absolute;
       color: $colorFont;
-      &.item-title {
+      // width: 35px;
+      // height: 35px;
+      // border-radius: 5px;
+      // box-shadow: 0px 2px 8px 1px $colorShadow;
+    }
+    & .item-header {
+      display: flex;
+      justify-content: center;
+      height: 70px;
+      & .item-title {
+        position: absolute;
+        top: 1.5rem;
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: $colorFont;
+        max-width: 280px;
         text-transform: capitalize;
       }
     }
-  }
-  .item-body {
-    height: 300px;
-    img {
-      display: block;
-      margin: auto;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: all 0.5s ease-in-out;
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
-  }
-  .item-footer {
-    height: 80px;
-    margin-top: 1.5rem;
-    margin-left: 0.5rem;
-    .item-price {
-      color: $colorFont;
-      margin-bottom: 0.8rem;
-    }
-    .item-btns {
-      width: 100%;
-      display: flex;
-      justify-content: space-evenly;
-      .item-favorite {
-        color: $colorFont;
-        width: 35px;
-        height: 35px;
-        border-radius: 5px;
-        box-shadow: 0px 2px 8px 1px $colorShadow;
-      }
-      .item-btn-footer {
-        border-radius: 5px;
-        box-shadow: 0px 2px 8px 1px $colorShadow;
-        text-transform: uppercase;
-        transition: all 0.3s ease;
-        color: $colorFont;
-        cursor: pointer;
-        padding: 7px;
+    & .item-body {
+      height: 300px;
+      position: relative;
+      & img {
+        display: block;
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all 0.5s ease-in-out;
+        z-index: -1;
         &:hover {
-          @include colorBtn;
-          color: white;
+          transform: scale(1.1);
+          opacity: 0.4;
+        }
+      }
+      & .body-btn-to-cart {
+        position: absolute;
+        border: 2px solid black;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+        font-weight: 700;
+        font-size: 1rem;
+        margin: auto;
+        width: 150px;
+        height: 40px;
+        opacity: 0;
+        // &:hover ~ img{
+        //   opacity: 1;
+        // }
+      }
+    }
+    & .item-footer {
+      height: 80px;
+      margin-top: 1.5rem;
+      margin-left: 0.5rem;
+      & .item-price {
+        color: $colorFont;
+        margin-bottom: 0.8rem;
+      }
+      & .item-btns {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+
+        & .item-btn-footer {
+          border-radius: 5px;
+          box-shadow: 0px 2px 8px 1px $colorShadow;
+          text-transform: uppercase;
+          transition: all 0.3s ease;
+          color: $colorFont;
+          cursor: pointer;
+          padding: 7px;
+          &:hover {
+            @include colorBtn;
+            color: white;
+          }
         }
       }
     }
