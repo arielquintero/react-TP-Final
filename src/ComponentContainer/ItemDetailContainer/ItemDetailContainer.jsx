@@ -13,14 +13,9 @@ const ItemDetailContainer = () => {
 
 	getDocFirestore(productId, setProduct, setIsLoading);
 
-	//  useEffect(() => {
-	//     const db = getFirestore();
-	//     const queryDoc = doc(db, "productos", productId);
-	//     getDoc(queryDoc).
-	//     then((data) => setProduct({ id: data.id, ...data.data() }));
-	// }, [productId]);
-
 	return isLoading ? <Loading /> : <ItemDetail product={product} />;
 };
 
 export default ItemDetailContainer;
+
+// TODO: estoy en dic23
