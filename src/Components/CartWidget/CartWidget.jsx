@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useState } from "react";
+// import { useNavigate } from "react-router-dom";
 import { useCartContext } from "../../context/CartContext";
 import { BsCartCheck, BsCartX } from "react-icons/bs";
-import ModalWindow from "../ModalWindow/ModalWindow";
 import CartList from "../CartList/CartList";
+import ModalWindow from "../ModalWindow/ModalWindow";
 
 const CartWidget = () => {
 	const {

@@ -15,7 +15,7 @@ export const getCollectionFirestore = (id, setProducts, setIsLoading) => {
 		? query(queryCollection, where("categoria", "==", id))
 		: queryCollection;
 
-	getDocs(queryFiltered)
+	return getDocs(queryFiltered)
 		.then((data) =>
 			setProducts(
 				data.docs.map((product) => ({

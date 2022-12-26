@@ -8,11 +8,11 @@
     flex-wrap: wrap;
     width: 820px;
     padding-left: 20px;
-    background-color: rgba(255, 228, 196, 0.24);
+    background-color: #ffe4c43d;
     overflow: hidden;
 
     & .item-product {
-      background-color: rgba(255, 228, 196, 0.24);
+      background-color: #ffe4c43d;
       width: 50%;
       padding-bottom: 25px;
       position: relative;
@@ -25,7 +25,7 @@
       & .item-back {
         position: absolute;
         border-bottom: 50px solid transparent;
-        border-left: 40px solid red;
+        border-left: 40px solid #FF5500;
         z-index: 1;
         left: 20px;
         top: 10px;
