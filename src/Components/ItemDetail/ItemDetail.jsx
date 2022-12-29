@@ -1,9 +1,13 @@
-import ItemCount from "../ItemCount/ItemCount";
 import { useCartContext } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import ItemCount from "../ItemCount/ItemCount";
+import SlideShow from "../SlideShow/SlideShow";
+import { GrPrevious } from "react-icons/gr";
 
 const ItemDetail = ({ product }) => {
+	const { name, img, descripcion, detalle, categoria, price } = product;
+
 	const { addToCart, splitPrice } = useCartContext();
 	const [andNow, setAndNow] = useState(false);
 	const navigate = useNavigate();
@@ -13,7 +17,7 @@ const ItemDetail = ({ product }) => {
 		setAndNow(true);
 	};
 
-	const showPrice = splitPrice(product.price);
+	const showPrice = splitPrice(price);
 
 	return (
 		<div className="itemdetail_item-detail">
@@ -23,19 +27,18 @@ const ItemDetail = ({ product }) => {
 						className="item-back"
 						onClick={() => navigate("/")}
 					/>
-					<h3 className="item-title-product">{product.name}</h3>
+					<GrPrevious className="iconGr" />
+					<h3 className="item-title-product">{name}</h3>
 					<h4 className="item-price-product">
 						$ {showPrice[0]},{showPrice[1]}
 					</h4>
-					<img src={product.img} alt={product.name} />
+						{/* <SlideShow imgs={[img]} condition={true} /> */}
 				</div>
 				<div className="item-detail-product">
-					<h3 className="item-detail-description">
-						{product.descripcion}
-					</h3>
-					<p className="item-detail-detail">{product.detalle}</p>
+					<h3 className="item-detail-description">{descripcion}</h3>
+					<p className="item-detail-detail">{detalle}</p>
 					<h4 className="item-detail-category">
-						Categoria: {product.categoria}
+						Categoria: {categoria}
 					</h4>
 				</div>
 				<div className="item-detail-footer">
@@ -61,7 +64,7 @@ const ItemDetail = ({ product }) => {
 								stock={5}
 								initial={1}
 								onAdd={onAdd}
-								price={product.price}
+								price={price}
 							/>
 						)}
 					</>

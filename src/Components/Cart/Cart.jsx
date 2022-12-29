@@ -15,7 +15,7 @@ const Cart = ({ product }) => {
 					onClick={() => navigate(`/detail/${product.id}`)}
 				>
 					Nombre: {product.name} - Categoria: {product.categoria} -
-					precio: {subTotal[0]},{subTotal[1]} - cantidad:{" "}
+					precio: ${" "}{subTotal[0]},{subTotal[1]} - cantidad:{" "}
 					{product.quantity}{" "}
 				</p>
 				<button

@@ -12,7 +12,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    & .nav-responsive-search{
+    & .nav-responsive-search {
       display: none;
     }
     & .link {
@@ -54,7 +54,7 @@
       position: relative;
       display: flex;
       & .nav-container-input {
-        width: 500px;
+        width: min(50vw,500px);
         height: 40px;
         border-radius: 8px;
         padding: 2px;
@@ -79,9 +79,11 @@
 @media screen and (max-width: 640px) {
   .navbar_header {
     & .nav-container {
-      & .nav-container-input {
-        max-width: 300px;
-        height: 20px;
+      & .nav-container-search {
+        & .nav-container-input {
+          width: min(30vw, 300px);
+          height: 40px;
+        }
       }
     }
     & .nav-navbar {
@@ -163,6 +165,7 @@
       & .BsCart4 {
         display: block;
         font-size: 2rem;
+        cursor: pointer;
       }
     }
   }

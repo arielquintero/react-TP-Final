@@ -1,0 +1,37 @@
+.slideshow_slideshow {
+  position: relative;
+  & .slide-img {
+    display: flex;
+    flex-flow: column wrap;
+    object-fit: cover;
+    & .slideImg {
+      transition: 750ms ease;
+    }
+  }
+  & .actions {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    & button {
+      background-color: #f8f8f854;
+      cursor: pointer;
+      padding: 10px;
+      padding-top: 10px;
+      font-size: x-large;
+      height: 300px;
+      & .grIcon > * {
+        stroke: #000fffa2;
+        opacity: 0.5;
+      }
+      &:active {
+        cursor: pointer;
+        padding: 10px;
+        padding-top: 10px;
+        padding-top: 5px;
+        font-size: x-large;
+      }
+    }
+  }
+}

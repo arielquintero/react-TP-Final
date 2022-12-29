@@ -1,0 +1,10 @@
+.inthumbnail_in-thumbnail {
+  display: inline-flex;
+  padding: 20px;
+  margin: auto;
+  & .active {
+    border: 2px solid #d4d8d8;
+    transform: scale(1.3);
+    transition: all 500ms;
+  }
+}

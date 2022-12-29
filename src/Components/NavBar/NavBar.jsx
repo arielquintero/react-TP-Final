@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import CartWidget from "../CartWidget/CartWidget";
 import { BsCart4, BsSearch } from "react-icons/bs";
 import { BiMenu } from "react-icons/bi";
@@ -6,6 +6,7 @@ import { useState } from "react";
 
 const NavBar = () => {
 	const [isMenu, setIsMenu] = useState(false);
+    const navigate = useNavigate()
 
 	return (
 		<header className="navbar_header">
@@ -16,7 +17,7 @@ const NavBar = () => {
 				>
 					<BiMenu className="BiMenu" />
 				</button>
-				<span className="brand">EcoMMerS</span>
+				<span className="brand">All-Mycro</span>
 				<p className="nav-container-search">
 					<input className="nav-container-input" type="text" />
 					<button className="btn-search">
@@ -26,7 +27,9 @@ const NavBar = () => {
 				<button className="btn-nav-search">
 					<BsSearch className="BsSearh-nav" />
 				</button>
-				<BsCart4 className="BsCart4" />
+				<button onClick={() => navigate("/cart")}>
+					<BsCart4 className="BsCart4" />
+				</button>
 			</nav>
 			<nav className={`nav-navbar ${isMenu ? "isActive" : " "}`}>
 				<p className="nav-responsive-search">

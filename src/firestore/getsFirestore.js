@@ -6,33 +6,54 @@ import {
 	where,
 	getDoc,
 	doc,
+	addDoc,
 } from "firebase/firestore";
 
-export const getCollectionFirestore = (id, setProducts, setIsLoading) => {
+export const addCollectionFirestore = async (order, emptyCart) => {
+	const db = getFirestore();
+	const queryCollection = collection(db, "orders");
+    console.log(order)
+	return await addDoc(queryCollection, order)
+		.then((res) => console.log(res))
+		.catch((err) => console.error(err))
+		.finally(() => emptyCart());
+};
+
+export const getCollectionFirestore = async (id, setProducts, setIsLoading) => {
 	const db = getFirestore();
 	const queryCollection = collection(db, "productos");
 	const queryFiltered = id
 		? query(queryCollection, where("categoria", "==", id))
 		: queryCollection;
 
-	return getDocs(queryFiltered)
-		.then((data) =>
-			setProducts(
+	try {
+		try {
+			const data = await getDocs(queryFiltered);
+			return setProducts(
 				data.docs.map((product) => ({
 					id: product.id,
 					...product.data(),
 				})),
-			),
-		)
-		.catch((err) => console.error(err))
-		.finally(() => setIsLoading(false));
+			);
+		} catch (err) {
+			return console.error(err);
+		}
+	} finally {
+		return setIsLoading(false);
+	}
 };
 
-export const getDocFirestore = (productId, setProduct, setIsLoading) => {
+export const getDocFirestore = async (productId, setProduct, setIsLoading) => {
 	const db = getFirestore();
 	const queryDoc = doc(db, "productos", productId);
-	getDoc(queryDoc)
-		.then((data) => setProduct({ id: data.id, ...data.data() }))
-		.catch((err) => console.error(err))
-		.finally(() => setIsLoading(false));
+	try {
+		try {
+			const data = await getDoc(queryDoc);
+			return setProduct({ id: data.id, ...data.data() });
+		} catch (err) {
+			return console.error(err);
+		}
+	} finally {
+		return setIsLoading(false);
+	}
 };

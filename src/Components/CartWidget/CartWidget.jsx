@@ -14,14 +14,7 @@ const CartWidget = () => {
 		toggleModal,
 		closeModal,
 	} = useCartContext();
-	// const [viewModal, setViewModal] = useState(false);
-	// const navigate = useNavigate();
 
-	// const closeModal = () => {
-	//     setViewModal(!viewModal);
-	//     navigate("/cart")
-	console.log(viewModal);
-	// };
 
 	return (
 		<>

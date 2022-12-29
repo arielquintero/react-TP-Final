@@ -8,10 +8,10 @@
   padding-right: 2px;
   display: flex;
   justify-content: flex-end;
-  z-index: 1;
+  z-index: 2;
   & .container-modal {
     position: inherit;
-    z-index: 1;
+    z-index: 3;
     width: 500px;
     height: inherit;
     background: white;

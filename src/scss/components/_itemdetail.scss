@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  padding-bottom: 10px;
   & .item-wrapper {
     display: flex;
     flex-direction: row;
@@ -16,34 +17,48 @@
       width: 50%;
       padding-bottom: 25px;
       position: relative;
+      & .slideshow_slideshow > .slide-img {
+        min-height: 25rem;
+      }
       & img {
-        display: block;
+        width: 100%;
         margin: auto;
-        width: 90%;
-        object-fit: scale-down;
       }
       & .item-back {
         position: absolute;
         border-bottom: 50px solid transparent;
-        border-left: 40px solid #FF5500;
+        border-left: 40px solid #ff5500;
         z-index: 1;
         left: 20px;
         top: 10px;
         cursor: pointer;
+        &:hover {
+          scale: 1.2;
+        }
+      }
+      & .iconGr {
+        position: absolute;
+        left: 22px;
+        top: 18px;
+        z-index: 1;
+      }
+      & .iconGr > * {
+        stroke: white;
+        font-size: large;
       }
       & .item-title-product {
-        text-transform: lowercase;
+        text-transform: capitalize;
         text-align: center;
-        margin-top: 25px;
-        font-size: 2rem;
-        & .item-title-product {
-          text-transform: capitalize;
-        }
+        margin-top: 34px;
+        padding-left: 5px;
+        // font-size: 2rem;
+        font-size: 4vh;
       }
       & .item-price-product {
         margin-left: 20px;
         margin-bottom: 15px;
         font-size: 1.3rem;
+        color: $colorPrice;
       }
     }
     & .item-detail-product {
@@ -92,10 +107,41 @@
             height: 40px;
           }
         }
-
-        // & .to-cart {
-        //   background-color: blueviolet;
-        // }
+      }
+    }
+  }
+}
+@media screen and (max-width: 640px) {
+  .itemdetail_item-detail {
+    & .item-wrapper {
+      padding-left: 0;
+      display: grid;
+      & .item-product,
+      .item-detail-product {
+        padding: 10px 10px;
+        width: 100%;
+        & .item-back,
+        .iconGr {
+          left: 5px;
+          top: 4px;
+        }
+        & .iconGr {
+          top: 10px;
+        }
+        & .item-title-product {
+          padding: 0 10px;
+          margin: 10px;
+          
+        }
+      }
+      & .item-product > .slideshow_slideshow {
+        text-align: center;
+        margin: 0 auto;
+        & > .slide-img {
+          width: auto;
+          vertical-align: top;
+          height: 32rem;
+        }
       }
     }
   }

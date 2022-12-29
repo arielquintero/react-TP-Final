@@ -5,8 +5,17 @@ import OrderForm from "../OrderForm/OrderForm";
 import { useNavigate } from "react-router-dom";
 
 const CartList = ({ children }) => {
-	const { cartList, emptyCart, priceTotal, closeModal, setViewModal } =
-		useCartContext();
+	const {
+		cartList,
+		emptyCart,
+		priceTotal,
+		closeModal,
+		setViewModal,
+		fullOrder,
+		setFullOrder,
+	} = useCartContext();
+
+    console.log(fullOrder)
 	const navigate = useNavigate();
 	let strigURL = location.href;
 
@@ -40,11 +49,14 @@ const CartList = ({ children }) => {
 					{cartList.map((prod) => (
 						<Cart key={prod.id} product={prod} />
 					))}
-					<h4>El precio total es: {priceTotal()} </h4>
+					<h4>El precio total es: ${" "}{priceTotal()}</h4>
+					<button onClick={() => setFullOrder(!fullOrder)}>
+						{fullOrder ? <OrderForm /> : " "}
+						terminar compra
+					</button>
 					<button className="btn-empty-cart" onClick={emptyCart}>
 						Vaciar carrito
 					</button>
-					<OrderForm />
 					{children}
 				</div>
 			)}

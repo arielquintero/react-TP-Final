@@ -1,9 +1,9 @@
-import { getCollectionFirestore } from "../firestore/getsFirestore";
+import { getCollectionFirestore } from "../../firestore/getsFirestore";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useCartContext } from "../context/CartContext";
-import Loading from "../Components/Loading/Loading";
-import ItemList from "./ItemList/ItemList";
+import { useCartContext } from "../../context/CartContext";
+import Loading from "../../Components/Loading/Loading";
+import ItemList from "../ItemList/ItemList";
 
 const ItemListContainer = () => {
 	const [products, setProducts] = useState([]);

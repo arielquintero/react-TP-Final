@@ -1,4 +1,3 @@
-// import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { getDocFirestore } from "../../firestore/getsFirestore";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
@@ -17,5 +16,3 @@ const ItemDetailContainer = () => {
 };
 
 export default ItemDetailContainer;
-
-// TODO: estoy en dic23
