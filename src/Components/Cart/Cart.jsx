@@ -29,8 +29,8 @@ const Cart = ({ children }) => {
 	if (cartList.length === 0 && anOrderId === " ") {
 		return (
 			<div className="cart_cart-empty">
-				{/* {strigURL.indexOf("cart") > -1 ? ( */}
-				{strigURL ? (
+				{strigURL.indexOf("cart") > -1 ? (
+					// {strigURL ? (
 					<div className="view-cart">
 						{setViewModal(false)}
 						<p>Tu carrito esta vacio! :(</p>

@@ -2,7 +2,7 @@
 // import { useNavigate } from "react-router-dom";
 import { useCartContext } from "../../context/CartContext";
 import { BsCartCheck, BsCartX } from "react-icons/bs";
-import Cart from "../Cart/Cart";
+import CartList from "../CartList/CartList";
 import ModalWindow from "../ModalWindow/ModalWindow";
 
 const CartWidget = () => {
@@ -14,7 +14,6 @@ const CartWidget = () => {
 		toggleModal,
 		closeModal,
 	} = useCartContext();
-
 
 	return (
 		<>
@@ -42,14 +41,14 @@ const CartWidget = () => {
 				setViewModal={setViewModal}
 				title="Carrito de Compras"
 			>
-				<Cart>
+				<CartList>
 					<button
 						className="btn-link-cart"
 						onClick={() => closeModal()}
 					>
 						Ir Carrito
 					</button>
-				</Cart>
+				</CartList>
 			</ModalWindow>
 		</>
 	);

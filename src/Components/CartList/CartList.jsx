@@ -17,6 +17,7 @@ const CartList = ({ children }) => {
 
 				
 			</div>
+            {children}
 		</div>
 	);
 };
