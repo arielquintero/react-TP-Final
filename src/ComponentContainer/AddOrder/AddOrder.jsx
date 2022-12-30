@@ -8,11 +8,12 @@ const AddOrder = () => {
 		priceTotal,
 		cartList,
 		formData,
-		fullOrder,
-		setFullOrder,
+        anOrderId,
+		setAnOrderId,
+		setConfirmation,
 		emptyCart,
 	} = useCartContext();
-    const navigate = useNavigate()
+	const navigate = useNavigate();
 	console.log(formData);
 
 	const addOrder = (e) => {
@@ -28,12 +29,14 @@ const AddOrder = () => {
 		}));
 		addCollectionFirestore(order)
 			.then((res) => {
+				setAnOrderId(res.id);
 				console.log(res.id);
-                navigate(`/order/${res.id}`)
+                console.log("resOrderId"+anOrderId)
+				navigate(`/order/${res.id}`);
 				emptyCart();
 			})
 			.catch((error) => console.log(error));
-        setFullOrder(!fullOrder);
+		setConfirmation(true);
 	};
 
 	return (

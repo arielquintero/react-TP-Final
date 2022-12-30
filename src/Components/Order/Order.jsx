@@ -1,23 +1,23 @@
-
 const Order = ({ order }) => {
-	// const { orderId } = useParams();
+	console.log(order);
 
-	// const [id] = orders
-	// console.log(id)
-	// console.log([myOrder]);
-	// const { id, buyer, items, price } = order;
-     console.log(order)
-    
-	return <>
-        {/* {order.map(({ id, buyer, items, price }) => 
-        
-        <div key={id}> 
-            {buyer && buyer.map(user=>
-            <li key={}>
-                
-            </li>)} items && console.log(items), console.log(price) )}
-        </div>   */}
-    </>;
+	return (
+		<>
+			<h2>Order:{order.id}</h2>
+			{order.buyer && <h2>Buyer:{order.buyer?.name}</h2>}
+			{order.buyer && <h2>Buyer:{order.buyer?.email}</h2>}
+			{order.buyer && <h2>Buyer:{order.buyer?.phone}</h2>}
+
+			{order.items &&
+				order.items.map(({ id, name, price }) => (
+					<ul key={id}>
+						{id && <li>{id}</li>}
+						{name && <li>{name}</li>}
+						{price && <li>{price}</li>}
+					</ul>
+				))}
+		</>
+	);
 };
 
 export default Order;
