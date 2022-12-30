@@ -18,7 +18,6 @@ const ItemDetail = ({ product }) => {
 	};
 
 	const showPrice = splitPrice(price);
-
 	return (
 		<div className="itemdetail_item-detail">
 			<div className="item-wrapper">
@@ -32,7 +31,9 @@ const ItemDetail = ({ product }) => {
 					<h4 className="item-price-product">
 						$ {showPrice[0]},{showPrice[1]}
 					</h4>
-						{/* <SlideShow imgs={[img]} condition={true} /> */}
+					<div>
+						{img && <SlideShow imgs={img} condition={true} />}
+					</div>
 				</div>
 				<div className="item-detail-product">
 					<h3 className="item-detail-description">{descripcion}</h3>

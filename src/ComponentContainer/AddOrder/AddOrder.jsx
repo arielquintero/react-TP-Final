@@ -1,13 +1,19 @@
+import { useNavigate } from "react-router-dom";
 import { Form } from "../../Components/Form/Form";
 import { useCartContext } from "../../context/CartContext";
 import { addCollectionFirestore } from "../../firestore/getsFirestore";
 
 const AddOrder = () => {
-
-	
-	const { priceTotal, cartList, formData, fullOrder, setFullOrder } = useCartContext();
-
-    console.log(formData)
+	const {
+		priceTotal,
+		cartList,
+		formData,
+		fullOrder,
+		setFullOrder,
+		emptyCart,
+	} = useCartContext();
+    const navigate = useNavigate()
+	console.log(formData);
 
 	const addOrder = (e) => {
 		e.preventDefault();
@@ -20,17 +26,19 @@ const AddOrder = () => {
 			price,
 			name,
 		}));
-		addCollectionFirestore();
+		addCollectionFirestore(order)
+			.then((res) => {
+				console.log(res.id);
+                navigate(`/order/${res.id}`)
+				emptyCart();
+			})
+			.catch((error) => console.log(error));
         setFullOrder(!fullOrder);
 	};
 
 	return (
 		<>
-			{fullOrder ? (
-				<Form addOrder={addOrder(e)} />
-			) : (
-				<h4>No puede estar vacia la orden</h4>
-			)}
+			<Form addOrder={addOrder} />
 		</>
 	);
 };

@@ -1,5 +1,5 @@
 import { getDocFirestore } from "../../firestore/getsFirestore";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useCartContext } from "../../context/CartContext";
 import ItemDetail from "../../Components/ItemDetail/ItemDetail";
@@ -10,8 +10,14 @@ const ItemDetailContainer = () => {
 	const { isLoading, setIsLoading } = useCartContext();
 	const { productId } = useParams();
 
-	getDocFirestore(productId, setProduct, setIsLoading);
+	const choice = { choiceId: productId, choiceCollection: "productos" };
 
+	useEffect(() => {
+		getDocFirestore(choice)
+			.then((data) => setProduct({ id: data.id, ...data.data() }))
+			.catch((err) => console.log(err))
+			.finally(() => setIsLoading(false));
+	}, [productId]);
 	return isLoading ? <Loading /> : <ItemDetail product={product} />;
 };
 

@@ -2,7 +2,7 @@ const InThumbnail = ({ imgs, setIndex, index }) => {
 
 	return (
 		<div className="inthumbnail_in-thumbnail">
-			{imgs.map((el, i) => (
+			{imgs?.map((el, i) => (
 				<img
 					key={i}
 					height="50"

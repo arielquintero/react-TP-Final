@@ -1,6 +1,47 @@
 .footer_footer {
-  height: 100px;
-  width: 100%;
-  background-color: blue;
-  color: white;
+  background-color: #252527;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 45vh;
+  margin-top: 80px;
+  & h2 {
+    color: #FF5500;
+    font-size: 3rem;
+  }
+  & h3 {
+    color: white;
+    font-size: 1rem;
+  }
+  & .social {
+    padding-top: 2.5rem;
+
+    & a {
+      .social-icons {
+        color: #2f6d88;
+      }
+    }
+
+    &-github {
+      margin-right: 50px;
+    }
+
+    &-linkedin {
+      margin-left: 50px;
+    }
+  }
+
+  & .copyright {
+    text-align: center;
+    color: white;
+    padding: 40px 0px 20px;
+    font-size: 18px;
+    & span {
+      margin: 0 15px;
+    }
+    & .porfolio {
+      color: #FF5500;
+    }
+  }
 }

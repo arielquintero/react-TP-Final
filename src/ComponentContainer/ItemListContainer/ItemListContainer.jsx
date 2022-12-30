@@ -10,8 +10,22 @@ const ItemListContainer = () => {
 	const { isLoading, setIsLoading } = useCartContext();
 	const { idCategory } = useParams();
 
+	const choice = {
+		choiceId: idCategory,
+		choiceCollections: "productos"
+	};
 	useEffect(() => {
-		getCollectionFirestore(idCategory, setProducts, setIsLoading);
+		getCollectionFirestore(choice)
+			.then((data) =>
+				setProducts(
+					data.docs.map((product) => ({
+						id: product.id,
+						...product.data(),
+					})),
+				),
+			)
+			.catch((err) => console.error(err))
+			.finally(() => setIsLoading(false));
 	}, [idCategory]);
 
 	return <>{isLoading ? <Loading /> : <ItemList products={products} />}</>;

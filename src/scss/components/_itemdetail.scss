@@ -18,7 +18,8 @@
       padding-bottom: 25px;
       position: relative;
       & .slideshow_slideshow > .slide-img {
-        min-height: 25rem;
+        // min-height: 25rem;
+        height: 25rem;
       }
       & img {
         width: 100%;

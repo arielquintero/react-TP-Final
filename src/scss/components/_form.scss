@@ -1,3 +1,21 @@
-// .form_form{
-  
-// }
+.form_form {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  & input:invalid + .help {
+    color: #cc0f35;
+  }
+
+  & .input:valid {
+    border-color: #257942;
+  }
+
+  & .input:valid + .help {
+    color: #257942;
+  }
+
+  & .input:valid + .help::after {
+    content: " ✔ ";
+  }
+}
