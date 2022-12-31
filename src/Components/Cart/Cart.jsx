@@ -1,30 +1,28 @@
+import { useState, useEffect } from "react";
 import { useCartContext } from "../../context/CartContext";
-import { useNavigate } from "react-router-dom";
+import OrderForm from "../OrderForm/OrderForm";
+import Table from "../Table/Table";
 
-const Cart = ({ product }) => {
-	const { splitPrice, deleteItemToCart } = useCartContext();
-	const navigate = useNavigate();
-	const subTotal = splitPrice(product.price, product.quantity);
+const Cart = () => {
+	const { emptyCart } = useCartContext();
+	const [finish, setFinish] = useState(false);
+	const [mount, setMount] = useState(true);
+
+	const showButtons = (
+		<>
+        <button onClick={() => {setFinish(!finish)}}>
+				Voy a terminar la Compra
+			</button>
+			<button className="btn-empty-cart" onClick={emptyCart}>
+				Vaciar carrito
+			</button>
+		</>
+	);
 
 	return (
 		<>
-			<li key={product.id} className="cart_item-list-product">
-				{" "}
-				<p
-					className="back-item-detail"
-					onClick={() => navigate(`/detail/${product.id}`)}
-				>
-					Nombre: {product.name} - Categoria: {product.categoria} -
-					precio: ${" "}{subTotal[0]},{subTotal[1]} - cantidad:{" "}
-					{product.quantity}{" "}
-				</p>
-				<button
-					className="btn-empty-item"
-					onClick={() => deleteItemToCart(product)}
-				>
-					X
-				</button>
-			</li>
+			<Table />
+			{!finish && mount ? showButtons  : <OrderForm /> }
 		</>
 	);
 };

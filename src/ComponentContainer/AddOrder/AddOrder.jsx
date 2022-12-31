@@ -15,6 +15,8 @@ const AddOrder = () => {
     const navigate = useNavigate()
 	console.log(formData);
 
+
+
 	const addOrder = (e) => {
 		e.preventDefault();
 		// armar la orden de un formulario
@@ -26,6 +28,7 @@ const AddOrder = () => {
 			price,
 			name,
 		}));
+        order.date = firebase.firestore.Timestamp.fromDate( new Date());
 		addCollectionFirestore(order)
 			.then((res) => {
 				console.log(res.id);

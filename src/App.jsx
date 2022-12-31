@@ -9,15 +9,17 @@ import { CartContextProvider } from "./context/CartContext";
 import Layout from "./Components/Layout/Layout";
 import Slider from "./ComponentContainer/Slider/Slider";
 import "./App.scss";
+import { Form } from "./Components/Form/Form";
 
 function App() {
 	// const showName = (name) => name;
 	return (
 		<BrowserRouter>
 			<CartContextProvider>
-				<NavBar />
+				{/* <NavBar />
                 <Slider />
-				<Layout />
+				<Layout /> */}
+                <Form />
 			</CartContextProvider>
 		</BrowserRouter>
 	);
