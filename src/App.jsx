@@ -5,21 +5,19 @@ import NavBar from "./Components/NavBar/NavBar";
 // import ItemListContainer from "./ComponentContainer/ItemListContainer";
 // import ItemDetailContainer from "./ComponentContainer/ItemDetailContainer/ItemDetailContainer";
 import { CartContextProvider } from "./context/CartContext";
-// import CartContainer from "./ComponentContainer/CartContainer/CartContainer";
+import CartContainer from "./ComponentContainer/CartContainer/CartContainer";
 import Layout from "./Components/Layout/Layout";
 import Slider from "./ComponentContainer/Slider/Slider";
 import "./App.scss";
-import { Form } from "./Components/Form/Form";
 
 function App() {
 	// const showName = (name) => name;
 	return (
 		<BrowserRouter>
 			<CartContextProvider>
-				{/* <NavBar />
-                <Slider />
-				<Layout /> */}
-                <Form />
+				<NavBar />
+				<Slider />
+				<Layout />
 			</CartContextProvider>
 		</BrowserRouter>
 	);

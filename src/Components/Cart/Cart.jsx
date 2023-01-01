@@ -1,19 +1,23 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useCartContext } from "../../context/CartContext";
-import OrderForm from "../OrderForm/OrderForm";
 import Table from "../Table/Table";
+import AddOrder from "../../ComponentContainer/AddOrder/AddOrder";
 
 const Cart = () => {
 	const { emptyCart } = useCartContext();
 	const [finish, setFinish] = useState(false);
-	const [mount, setMount] = useState(true);
 
 	const showButtons = (
 		<>
-        <button onClick={() => {setFinish(!finish)}}>
+			<button className="cart_btn-empty-cart"
+				onClick={() => {
+					setFinish(!finish);
+				}}
+
+			>
 				Voy a terminar la Compra
 			</button>
-			<button className="btn-empty-cart" onClick={emptyCart}>
+			<button className="cart_btn-empty-cart" onClick={emptyCart}>
 				Vaciar carrito
 			</button>
 		</>
@@ -21,8 +25,14 @@ const Cart = () => {
 
 	return (
 		<>
-			<Table />
-			{!finish && mount ? showButtons  : <OrderForm /> }
+			{!finish ? (
+				<>
+					<Table />
+					{showButtons}
+				</>
+			) : (
+				<AddOrder />
+			)}
 		</>
 	);
 };

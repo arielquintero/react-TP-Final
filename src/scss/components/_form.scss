@@ -62,20 +62,6 @@
             transition: 0.5s ease all;
             pointer-events: none;
           }
-          & input:invalid + .help {
-            color: #cc0f35;
-          }
-          & .input:valid {
-            border-color: #257942;
-          }
-
-          & .input:valid + .help {
-            color: #257942;
-          }
-
-          & .input:valid + .help::after {
-            content: " ✔ ";
-          }
           & input:focus ~ label,
           & input:valid ~ label {
             top: -14px;

@@ -11,11 +11,10 @@ const AddOrder = () => {
 		fullOrder,
 		setFullOrder,
 		emptyCart,
+		setNewOrderId,
 	} = useCartContext();
-    const navigate = useNavigate()
+	const navigate = useNavigate();
 	console.log(formData);
-
-
 
 	const addOrder = (e) => {
 		e.preventDefault();
@@ -28,15 +27,16 @@ const AddOrder = () => {
 			price,
 			name,
 		}));
-        order.date = firebase.firestore.Timestamp.fromDate( new Date());
 		addCollectionFirestore(order)
 			.then((res) => {
 				console.log(res.id);
-                navigate(`/order/${res.id}`)
+				// navigate(`/order/${res.id}`);
+				setNewOrderId(res.id);
+				navigate("/order");
 				emptyCart();
 			})
 			.catch((error) => console.log(error));
-        setFullOrder(!fullOrder);
+		setFullOrder(!fullOrder);
 	};
 
 	return (

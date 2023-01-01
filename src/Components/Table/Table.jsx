@@ -6,7 +6,7 @@ const Table = () => {
 	const navigate = useNavigate();
 
 	return (
-		<div className="table-data">
+		<div className="table_table-data">
 			<div className="table-data__title">
 				<h1>Carrito</h1>
 			</div>

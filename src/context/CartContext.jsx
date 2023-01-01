@@ -12,6 +12,7 @@ export const CartContextProvider = ({ children }) => {
 	const [viewModal, setViewModal] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
     const [fullOrder, setFullOrder] = useState(false);
+    const [newOrderId, setNewOrderId] = useState([]);
 	const [formData, setFormData] = useState({
 		name: "",
 		phone: "",
@@ -79,10 +80,12 @@ export const CartContextProvider = ({ children }) => {
 				isLoading,
                 formData,
                 fullOrder,
+                newOrderId,
 				setViewModal,
 				setIsLoading,
                 setFullOrder,
                 setFormData,
+                setNewOrderId,
 				addToCart,
 				emptyCart,
 				cartQuantity,

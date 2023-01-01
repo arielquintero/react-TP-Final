@@ -1,22 +1,13 @@
-import { useState } from "react";
 import { useCartContext } from "../../context/CartContext";
 
 export const Form = ({ addOrder }) => {
 	const { formData, setFormData } = useCartContext();
-    const [error, setError] = useState(false)
-    const [] = useState()
 
 	const handleOnChange = (e) => {
 		e.preventDefault();
-        
+
 		const { target } = e;
 		const { name, value } = target;
-
-        // if(value.trin() === 0){
-        //     setError(true)
-        //     return
-        // }
-
 		setFormData({
 			...formData,
 			[name]: value,
@@ -30,29 +21,29 @@ export const Form = ({ addOrder }) => {
 					<form onSubmit={addOrder} autoComplete="off">
 						<div className="form-container">
 							<div className="group">
-								<input
-									onChange={handleOnChange}
-									type="text"
-									id="name"
-									name="name"
-									value={formData.name}
-									placeholder="ingrese su nombre"
-									pattern="^[a-zA-Z]+(?:\s?[a-zA-z]+)+"
-									minLength="3"
-									required
-									className="input"
-								/>
+								{
+									<input
+										type="text"
+										onChange={handleOnChange}
+										id="name"
+										name="name"
+										value={formData.name}
+										placeholder="ingrese su nombre"
+										pattern="^[a-zA-Z]+(?:\s?[a-zA-z]+)+"
+										minLength="3"
+										required
+									/>
+								}
 								<span className="bar" />
 								<label htmlFor="name" className="label">
 									Nombre
 								</label>
 								<div className="control">
-									<p className="help is-link">
+									<p className="help">
 										Su nombre debe contener solo caracteres.
 									</p>
 								</div>
 							</div>
-
 							<div className="group">
 								<input
 									type="tel"
@@ -63,11 +54,10 @@ export const Form = ({ addOrder }) => {
 									pattern="^\d+\s{1}\d{3}-\d{4}$"
 									placeholder="123 456-7890"
 									required
-									className="input"
 								/>
 								<span className="bar" />
 								<label htmlFor="phone" className="label">
-									Telephone
+									Telefono
 								</label>
 								<div className="control">
 									<p className="help">
@@ -83,9 +73,9 @@ export const Form = ({ addOrder }) => {
 									id="email"
 									name="email"
 									value={formData.email}
+									pattern="\^[a-zA-Z0-9.!#$%&'*+\=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$\"
 									placeholder="example@email.com"
 									required
-									className="input"
 								/>
 								<span className="bar" />
 								<label htmlFor="email" className="label">
@@ -93,11 +83,9 @@ export const Form = ({ addOrder }) => {
 								</label>
 							</div>
 							<div className="group">
-								<div className="control">
-									<button type="submit" className="btn-register">
-										Terminar Compra
-									</button>
-								</div>
+								<button type="submit" className="btn-register">
+									Terminar Compra
+								</button>
 							</div>
 						</div>
 					</form>
@@ -106,4 +94,3 @@ export const Form = ({ addOrder }) => {
 		</>
 	);
 };
-
