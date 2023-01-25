@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 E-Commerce usando ReactJS
 Objetivo
 
@@ -27,3 +28,6 @@ Demo
 Podes probar la aplicación funcionando haciendo en Netlify
 
 https://super-sorbet-49908c.netlify.app/
+=======
+# react-TP-Final
+>>>>>>> 690d43a3d009fb4d8bcb9498eb109e12e41c30c4
