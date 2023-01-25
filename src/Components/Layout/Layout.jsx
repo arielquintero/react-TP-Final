@@ -3,7 +3,6 @@ import ItemListContainer from "../../ComponentContainer/ItemListContainer/ItemLi
 import ItemDetailContainer from "../../ComponentContainer/ItemDetailContainer/ItemDetailContainer";
 import CartContainer from "../../ComponentContainer/CartContainer/CartContainer";
 import Footer from "../Footer/Foorter";
-import Order from "../../Components/Order/Order";
 import OrderForm from "../OrderForm/OrderForm";
 import OrderDetail from "../../ComponentContainer/OrderDetail/OrderDetail";
 
@@ -11,20 +10,11 @@ const Layout = () => {
 	return (
 		<div className="layout_layout">
 			<Routes>
-				<Route
-					path="/"
-					element={
-						<ItemListContainer
-						// greeting={"Te saludo desde Item List Container, "}
-						// myName={showName("Ariel")}
-						/>
-					}
-				/>
+				<Route path="/" element={<ItemListContainer />} />
 				<Route
 					path="/category/:idCategory"
 					element={<ItemListContainer />}
 				/>
-
 				<Route
 					path="/detail/:productId"
 					element={<ItemDetailContainer />}

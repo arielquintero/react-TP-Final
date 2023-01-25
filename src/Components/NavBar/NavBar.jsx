@@ -3,10 +3,21 @@ import CartWidget from "../CartWidget/CartWidget";
 import { BsCart4, BsSearch } from "react-icons/bs";
 import { BiMenu } from "react-icons/bi";
 import { useState } from "react";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const NavBar = () => {
 	const [isMenu, setIsMenu] = useState(false);
-    const navigate = useNavigate()
+	const navigate = useNavigate();
+
+	const MySwal = withReactContent(Swal);
+
+	const alertSearch = () => {
+		MySwal.fire({
+			html: <i>Pronto podras hacer una busqueda por producto</i>,
+			icon: "success",
+		});
+	};
 
 	return (
 		<header className="navbar_header">
@@ -20,7 +31,10 @@ const NavBar = () => {
 				<span className="brand">All-Mycro</span>
 				<p className="nav-container-search">
 					<input className="nav-container-input" type="text" />
-					<button className="btn-search">
+					<button
+						className="btn-search"
+						onClick={() => alertSearch()}
+					>
 						<BsSearch className="BsSearh" />
 					</button>
 				</p>
@@ -34,7 +48,10 @@ const NavBar = () => {
 			<nav className={`nav-navbar ${isMenu ? "isActive" : " "}`}>
 				<p className="nav-responsive-search">
 					<input className="nav-resposive-input" type="text" />
-					<button className="btn-search-responsive">
+					<button
+						className="btn-search-responsive"
+						onClick={() => alertSearch()}
+					>
 						<BsSearch className="BsSearh-responsive" />
 					</button>
 				</p>

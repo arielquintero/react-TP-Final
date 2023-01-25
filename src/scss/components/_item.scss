@@ -33,6 +33,7 @@
       width: 35px;
       height: 35px;
       border-radius: 5px;
+      cursor: pointer;
     }
   }
 
@@ -65,9 +66,6 @@
       width: 150px;
       height: 40px;
       opacity: 0;
-      // &:hover ~ img{
-      //   opacity: 1;
-      // }
     }
   }
   & .item-footer {

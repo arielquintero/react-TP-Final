@@ -1,5 +1,3 @@
-// import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import { useCartContext } from "../../context/CartContext";
 import { BsCartCheck, BsCartX } from "react-icons/bs";
 import CartList from "../CartList/CartList";
@@ -15,13 +13,12 @@ const CartWidget = () => {
 		closeModal,
 	} = useCartContext();
 
-
 	return (
 		<>
 			<div className="cartwidget_cart-widget" onClick={toggleModal}>
-				<p className="cart-widget">
+				<div className="cart-widget">
 					<>{cartList.length > 0 ? <BsCartCheck /> : <BsCartX />}</>
-					<p className="my-cart">
+					<div className="my-cart">
 						{" "}
 						Mi carrito
 						<p
@@ -34,8 +31,8 @@ const CartWidget = () => {
 							{cartQuantity() || ""}
 							{"   "}- items
 						</p>
-					</p>
-				</p>
+					</div>
+				</div>
 			</div>
 			<ModalWindow
 				viewModal={viewModal}

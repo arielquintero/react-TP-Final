@@ -12,7 +12,7 @@ const ItemListContainer = () => {
 
 	const choice = {
 		choiceId: idCategory,
-		choiceCollections: "productos"
+		choiceCollections: "productos",
 	};
 	useEffect(() => {
 		getCollectionFirestore(choice)

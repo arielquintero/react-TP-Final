@@ -1,29 +1,34 @@
 import { useCartContext } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
 import { VscPreview } from "react-icons/vsc";
-import { MdFavoriteBorder } from "react-icons/md";
+import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import SlideShow from "../SlideShow/SlideShow";
+import { useState } from "react";
 
 const Item = ({ id, name, img, price }) => {
-    
+	const [like, setLike] = useState(false);
 	const { splitPrice } = useCartContext();
 	const navigate = useNavigate();
 	const showPrice = splitPrice(price);
-    
+
 	return (
 		<div className="item_wrapper-product">
 			<div className="item-header">
 				<h4 className="item-title">{`${name}`}</h4>
 				<button
 					className="item-favorite"
-					onClick={() => alert("me gusta")}
+					onClick={() => setLike((prevLike) => !prevLike)}
 				>
-					<MdFavoriteBorder fontSize="2rem" />
+					{like ? (
+						<MdFavorite fontSize="2rem" />
+					) : (
+						<MdFavoriteBorder fontSize="2rem" />
+					)}
 				</button>
 			</div>
 			<div className="item-body">
 				<button className="body-btn-to-cart">Sumar al Carrito</button>
-                <SlideShow imgs={img} condition={false} />
+				<SlideShow imgs={img} condition={false} />
 			</div>
 			<div className="item-footer">
 				<p className="item-price">
