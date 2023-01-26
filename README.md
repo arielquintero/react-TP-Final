@@ -1,6 +1,8 @@
-<hr>
+
 ## E-Commerce usando ReactJS
+
 <hr>
+
 * Prof: Federico Osandon.
 
 
@@ -78,8 +80,6 @@ npm install
 ```sh
 npm run dev
 ```
-
-[//]
 
 [dill]:<https://super-sorbet-49908c.netlify.app/>
 [node.js]: <http://nodejs.org>
